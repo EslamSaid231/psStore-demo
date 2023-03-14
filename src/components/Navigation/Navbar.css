@@ -1,0 +1,16 @@
+.navContainer {
+  position: relative;
+}
+.sony-navbar {
+  background-color: black;
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  height: 40px;
+  align-items: center;
+}
+.sony-navbar h2 {
+  padding-right: 15px;
+  font-family: calerdion;
+}

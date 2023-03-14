@@ -1,0 +1,66 @@
+.GameContainer {
+  position: relative;
+  padding: 0 100px;
+  margin: 50px auto;
+}
+
+.GameContainer .control-btn-next {
+  position: absolute;
+  right: 7px;
+  top: 35px;
+
+  width: 70px;
+  height: 250px;
+  background-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0)
+  );
+  z-index: 99;
+  border-radius: 15px;
+}
+.GameContainer .control-btn-prev {
+  position: absolute;
+  left: 7px;
+  top: 35px;
+  z-index: 99;
+  width: 70px;
+  height: 250px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0)
+  );
+  border-radius: 15px;
+}
+.GameContainer .control-btn-next .next {
+  position: absolute;
+  right: 8px;
+  z-index: 99;
+  top: 40%;
+  background: none;
+  color: #fff;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  border-color: #fff;
+}
+
+.GameContainer .control-btn-prev .prev {
+  position: absolute;
+  left: 8px;
+  z-index: 99;
+  top: 40%;
+  background: none;
+  color: #fff;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  border-color: #fff;
+}

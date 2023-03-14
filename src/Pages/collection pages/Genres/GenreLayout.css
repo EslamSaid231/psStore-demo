@@ -1,0 +1,81 @@
+.cardAnimator {
+  animation: cardanimate 0.2s ease-in forwards;
+}
+.figure-card {
+  display: flex;
+  padding: 15px;
+  justify-content: center;
+  background-color: #fff;
+  height: 65vh;
+  width: 22vw;
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 6px gray;
+  border-radius: 25px;
+  font-family: calerdion;
+
+  transition: background-color 0.25s ease-out;
+  transition: transform 0.3s ease-in-out;
+}
+.figure-card:hover {
+  transition: background-color 0.25s ease-out;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 1px 1px 20px gray;
+
+  background-color: rgb(235, 234, 234);
+  transform: scale3d(1.08, 1.08, 1.08) translateY(-10px);
+}
+.game-figure img {
+  height: 35vh;
+  width: 18vw;
+  border-radius: 5px;
+}
+.game-figure {
+  text-align: center;
+}
+.game-figure a {
+  color: black;
+  text-decoration: none;
+}
+.game-figure h5 {
+  text-align: left;
+  margin-top: 10px;
+}
+.gameDesc {
+  margin-top: 15px;
+  overflow: hidden;
+  width: 20vw;
+  display: block;
+  height: 30vh;
+  text-align: left;
+}
+.platform-img {
+  display: flex;
+}
+.gameText p {
+  display: flex;
+  justify-content: space-between;
+}
+.platImagesCont {
+  display: flex;
+  margin-left: 5px;
+  justify-content: space-between;
+  width: 70%;
+}
+.platform-img img {
+  height: 25px;
+  width: 25px;
+  margin-left: 5px;
+
+  filter: grayscale(1);
+}
+@keyframes cardanimate {
+  from {
+    opacity: 0;
+    transform: translateY(20rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}

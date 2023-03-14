@@ -1,0 +1,49 @@
+.psLogo {
+  width: 50px;
+  height: 45px;
+}
+
+.NavMenuContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navlogo-Menu {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  width: 550px;
+
+  height: 60px;
+}
+.Menu-btns {
+  margin-left: 20px;
+}
+.Menu-btns button {
+  margin-left: 5px;
+  padding: 5px;
+  color: black;
+  background-color: transparent;
+  border: none;
+}
+.searchCont {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  justify-content: space-around;
+  width: 250px;
+
+  height: 60px;
+}
+.searchCont button {
+  color: white;
+  background-color: #0068bd;
+  padding: 5px 30px;
+  border-radius: 15px;
+  border: none;
+}
+.Menu-btns img {
+  transform: rotate(90deg);
+  height: 10px;
+  margin-left: 5px;
+}
