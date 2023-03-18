@@ -1,0 +1,27 @@
+.checkout {
+  position: static;
+  bottom: 0px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 50vw;
+  height: 11vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: rgba(20, 20, 20, 0.9);
+}
+.checkoutpanel {
+  margin-top: 10px;
+  margin-right: 25px;
+  color: #0068bd;
+  font-weight: 600;
+}
+.checkout button {
+  margin-left: 10px;
+  background-color: #0068bd;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 15px;
+}

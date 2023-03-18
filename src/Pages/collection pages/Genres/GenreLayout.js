@@ -30,8 +30,8 @@ const GenreLayout = (props) => {
   let arr = [];
 
   let cancel = 2;
-  console.log(platforms);
-  let filtering = platImages.filter((img) => {
+
+  platImages.filter((img) => {
     return img.name.includes(
       platforms.map((platform) =>
         platform === img.name
@@ -44,9 +44,8 @@ const GenreLayout = (props) => {
     setTimeout(() => {
       setPlatArr(arr);
     }, 500);
-    console.log(filtering);
   }, [2]);
-  console.log(props.gameID);
+
   return (
     <>
       <div className="cardAnimator">
@@ -76,11 +75,6 @@ const GenreLayout = (props) => {
 
                 <p>
                   Released in: <span>{props.Released}</span>
-                </p>
-
-                <p>
-                  {" "}
-                  ESRB: <span>{props.esrb}</span>
                 </p>
               </div>
             </div>

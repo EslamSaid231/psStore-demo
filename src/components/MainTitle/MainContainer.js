@@ -5,10 +5,12 @@ import vrImg from "../../Assets/9777b74a69bdb53eee269fac15ad5793d545a095.webp";
 import GameContainer from "../GameContainer/GameContainer";
 import CoDImg from "../../Assets/call_of_duty_sony_microsoft_activision_eu.jpg";
 import GodOfWar from "../../Assets/god_of_war.jpg";
+
 const images = [vrImg, CoDImg, GodOfWar];
 const MainContainer = (props) => {
   const { games } = useData();
   const [currentIndex, setCurrentIndex] = useState(0);
+
   useEffect(() => {
     const identifier = setTimeout(() => {
       if (currentIndex === 2) {
@@ -19,6 +21,7 @@ const MainContainer = (props) => {
       return clearTimeout(identifier);
     }, 6000);
   }, [currentIndex]);
+
   return (
     <div>
       <AdContainer items={games} Pic={images[currentIndex]} />

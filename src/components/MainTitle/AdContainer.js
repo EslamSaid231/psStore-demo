@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Button from "../UI/Button";
 import "./AdContainer.css";
@@ -17,7 +18,9 @@ const AdContainer = (props) => {
           title={"Feel a New Real"}
           paragraph={"Immerse yourself in epic worlds that go beyond reality"}
         />
-        <Button title={"See Games"} className={"lightBlueBtn"} />
+        <Link to="/games">
+          <Button title={"See Games"} className={"lightBlueBtn"} />
+        </Link>
       </div>
     </div>
   );

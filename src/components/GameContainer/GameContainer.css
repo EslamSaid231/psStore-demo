@@ -7,10 +7,10 @@
 .GameContainer .control-btn-next {
   position: absolute;
   right: 7px;
-  top: 35px;
+  top: 0px;
 
   width: 70px;
-  height: 250px;
+  height: 254px;
   background-image: linear-gradient(
     to left,
     rgba(0, 0, 0, 0.5),
@@ -25,10 +25,10 @@
 .GameContainer .control-btn-prev {
   position: absolute;
   left: 7px;
-  top: 35px;
+  top: 0px;
   z-index: 99;
   width: 70px;
-  height: 250px;
+  height: 254px;
   background-image: linear-gradient(
     to right,
     rgba(0, 0, 0, 0.5),
@@ -42,7 +42,7 @@
 .GameContainer .control-btn-next .next {
   position: absolute;
   right: 8px;
-  z-index: 99;
+
   top: 40%;
   background: none;
   color: #fff;
@@ -50,6 +50,14 @@
   height: 50px;
   width: 50px;
   border-color: #fff;
+}
+.GameContainer .control-btn-next:hover button {
+  color: gray;
+  border-color: black;
+}
+.GameContainer .control-btn-prev:hover button {
+  color: gray;
+  border-color: black;
 }
 
 .GameContainer .control-btn-prev .prev {

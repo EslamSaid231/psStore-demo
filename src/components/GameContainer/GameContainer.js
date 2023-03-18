@@ -38,11 +38,10 @@ const GameContainer = () => {
     prevArrow: <SmaplePrevArrow />,
   }; //Slider settings
   const { games } = useData();
-  // const { setPageState } = useData();
-  // const gameID = games.id;
-  // const routeParams = useParams();
+
   return (
     <div className="GameContainer">
+      <p>Check out latest games</p>
       <Slider {...settings}>
         {games.map((game) => (
           <GameCard key={game.id} games={game} />

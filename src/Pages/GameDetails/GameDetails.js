@@ -4,81 +4,100 @@ import { useData } from "../../Store/DataProvider";
 import "./GameDetails.css";
 import leftArrow from "../../Assets/leftArrow.png";
 import ScreenShots from "../../components/UI/ScreenShots";
+import Slider from "../../components/UI/imgSlider/Slider";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../Store/Redux/store/cart-slice";
 
 const GameDetails = () => {
+  const dispatch = useDispatch();
   const { gameId } = useParams();
-  const { games } = useData();
-  const indexing = games.findIndex((game) => game.id === +gameId);
-  const [index, setIndex] = useState(indexing);
+  const { Data } = useData();
+  const filtering = Data.flatMap((gamePages) =>
+    gamePages.filter((gamePage) => gamePage.id === +gameId)
+  );
+  const game = filtering[0];
   const [currentImg, setCurrentImg] = useState();
-  const goToNext = () => {
-    setIndex(index + 1);
-  };
+  console.log(game.background_image);
   useEffect(() => {
-    setCurrentImg(thisProduct.background_image);
-  }, [index]);
+    setCurrentImg(game.background_image);
+  }, [gameId]);
 
-  const thisProduct = games[index];
-  console.log(index + 1);
-  const genres = thisProduct.genres.map((genre) => (
+  const genres = game.genres.map((genre) => (
     <Link to={`/games/${genre.name.toLowerCase()}`}>{genre.name}</Link>
   ));
-  const platforms = thisProduct.platforms.map((plat) => plat.platform.name);
-  const tags = thisProduct.tags.map((tag) => tag.name);
-  const order = () => {
+
+  const platforms = game.platforms.map((plat) => plat.platform.name).join(" ");
+
+  const tags = game.tags.map((tag) => tag.name).join(" ");
+
+  const addToCartHandler = () => {
     console.log("...Ordering");
+    dispatch(
+      cartActions.addItemToCart({
+        id: game.id,
+        image: game.background_image,
+        name: game.name,
+        price: game.reviews_text_count,
+      })
+    );
   };
-  const thumbChange = (thumb) => {
+  const thumbChange = (thumb, active) => {
     setCurrentImg(thumb);
   };
 
-  const screenShots = thisProduct.short_screenshots;
+  const screenShots = filtering.map((game) => game.short_screenshots);
 
   return (
     <>
-      <div key={thisProduct.id}>
+      <div key={filtering.map((game) => game.id)}>
         <div className="detailsContainer">
-          <img src={currentImg} alt={thisProduct.name} />
-          <div className="NextBtn">
-            <button onClick={goToNext}>
-              <img src={leftArrow} alt="/" className="nextImg" />
-            </button>
-          </div>
+          <img src={currentImg} alt={filtering.map((game) => game.name)} />
+
           <div className="gameDetails">
             <div className="go-backLink">
-              <Link to="..">
+              <Link to={`/games`}>
                 <img src={leftArrow} className="go-backImg" alt="go-back" />
               </Link>
             </div>
 
             <div className="detailsText">
-              <h1>{thisProduct.name}</h1>
+              <h1>{game.name}</h1>
               <span className="genres">Genres: {genres}</span>
               <br />
-              <span>Available on: {platforms.join(" ")}</span>
-              <span>Total Playtime: {thisProduct.playtime}</span>
+              <span>Available on: {platforms} </span>
+              <span>Total Playtime: {game.playtime}</span>
               <span>
-                Tags: <span>{tags.join(" ")}</span>
+                Tags: <span>{tags}</span>
               </span>
 
-              <span>Release in: {thisProduct.released}</span>
-              <span>ESRB: {thisProduct.esrb_rating.name}</span>
-              <button onClick={order} className="ordering">
-                Order Now!
+              <span>Release in: {game.released}</span>
+
+              <button onClick={addToCartHandler} className="ordering">
+                Add to cart
               </button>
             </div>
           </div>
         </div>
       </div>
       <div className="screenshotsContainer">
-        {screenShots.map((shot) => (
-          <ScreenShots
-            key={shot.id}
-            src={shot.image}
-            thumb={thumbChange}
-            id={shot.id}
-          />
-        ))}
+        <Slider>
+          {screenShots.map((screen) =>
+            screen.map((shot, ind) => {
+              ind += 1;
+              return (
+                <div>
+                  <ScreenShots
+                    key={shot.id}
+                    src={shot.image}
+                    thumb={thumbChange}
+                    id={shot.id}
+                    curr={currentImg}
+                  />
+                </div>
+              );
+            })
+          )}
+        </Slider>
       </div>
     </>
   );

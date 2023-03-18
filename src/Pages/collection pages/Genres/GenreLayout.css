@@ -44,13 +44,14 @@
 .gameDesc {
   margin-top: 15px;
   overflow: hidden;
-  width: 20vw;
+  width: 100%;
   display: block;
-  height: 30vh;
+  height: 20vh;
   text-align: left;
 }
 .platform-img {
   display: flex;
+  justify-content: space-between;
 }
 .gameText p {
   display: flex;
@@ -60,7 +61,6 @@
   display: flex;
   margin-left: 5px;
   justify-content: space-between;
-  width: 70%;
 }
 .platform-img img {
   height: 25px;

@@ -1,0 +1,30 @@
+.results-card {
+  height: fit-content;
+  margin: 5px;
+}
+.results-card:hover {
+  margin: 5px;
+}
+.results-card .GameCard:hover {
+  background-color: azure;
+  border-radius: 15px;
+  border-left: 3px blue solid;
+}
+.results-card .GameCardDesc {
+  height: 16vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.results-card .GameCardDesc span {
+  font-weight: 500;
+}
+.results-card .Gametitle {
+  font-size: 15px;
+  height: 30px;
+}
+.results-card .price {
+  display: flex;
+  margin-top: 5px;
+  align-items: center;
+}

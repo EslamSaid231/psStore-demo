@@ -3,7 +3,7 @@ import "./Rating.css";
 const Rating = (props) => {
   let rate = props.Rating;
   const [rating, setRating] = useState(rate);
-  console.log(Math.floor(rate));
+
   return (
     <div className="star-rating">
       {[...Array(5)].map((star, index) => {

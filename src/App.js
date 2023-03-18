@@ -12,29 +12,25 @@ import { Navigate, Route, Routes } from "react-router";
 import GameDetails from "./Pages/GameDetails/GameDetails";
 
 import Genre from "./Pages/collection pages/Genre";
+import Games from "./Pages/AllGames/Games";
+import Cart from "./components/Cart/Cart";
+import { useSelector } from "react-redux";
 
 function App() {
   const ctx = useContext(AuthContext);
-  const queryParams = new URLSearchParams(window.location.search);
-  const gameId = queryParams.get("gameId");
-  console.log(queryParams);
+  const showCart = useSelector((state) => state.ui.cartIsVisible);
+
   return (
     <div className="App">
-      <div>{ctx.isLoggedIn ? <Navbar /> : "1"}</div>
       <div>
         <DataContextProvider>
+          <div>{ctx.isLoggedIn ? <Navbar /> : "1"}</div>
+          {showCart && <Cart />}
           <Routes>
-            <Route
-              path="/"
-              element={
-                !ctx.isLoggedIn ? <LoginPage /> : <Navigate to="/home" />
-              }
-            />
-            <Route
-              path="/home"
-              element={ctx.isLoggedIn ? <MainContainer /> : <Navigate to="/" />}
-            />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="/" element={<MainContainer />} />
             <Route path="/game/:gameId" element={<GameDetails />} />
+            <Route path="/games" element={<Games />} />
             <Route path="/games/:genre" element={<Genre />} />
           </Routes>
         </DataContextProvider>
@@ -44,3 +40,16 @@ function App() {
 }
 
 export default App;
+
+{
+  /* <Route
+              path="/"
+              element={
+                !ctx.isLoggedIn ? (
+                  <Navigate to="login" />
+                ) : (
+                  <Navigate to="home" />
+                )
+              }
+            /> */
+}

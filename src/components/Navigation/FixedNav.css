@@ -1,12 +1,30 @@
+.fixedNavpos {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 99;
+  background-color: #fff;
+  transition: all 0.2s ease-out;
+}
 .fixedNav {
   margin-top: 5px;
+  padding: 20px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 62%;
-  margin-left: 20px;
   height: 8vh;
+  transition: all 0.25s ease-in;
 }
+.panels {
+  display: flex;
+  width: 300px;
+  justify-content: flex-end;
+}
+.panels i {
+  margin-left: 20px;
+}
+
 .fixedNav img {
   height: 25px;
   margin-right: 15px;
@@ -25,13 +43,17 @@
   width: 250px;
   box-shadow: 0px 5px 8px #5c5b5b;
 }
-.showMenu ul {
-  list-style: none;
-}
+
 .showMenu li {
   height: 40px;
   display: flex;
+  width: 100%;
+  padding-left: 25px;
+
   align-items: center;
+}
+.showMenu li:hover {
+  background-color: rgb(220, 219, 219);
 }
 
 .showMenu li a {
