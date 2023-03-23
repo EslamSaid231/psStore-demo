@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+//a slice that controls notification bar and cart layout
 const uiSlice = createSlice({
   name: "ui",
   initialState: {

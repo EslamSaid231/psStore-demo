@@ -3,6 +3,24 @@
   padding: 0 100px;
   margin: 50px auto;
 }
+
+.animating {
+  animation: animateGameCont 0.5s forwards;
+}
+@keyframes animateGameCont {
+  0% {
+    transform: translateY(300px);
+  }
+  25% {
+    transform: translateY(-50px);
+  }
+  75% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 .GameContainer p {
   font-weight: 600;
   font-size: 25px;

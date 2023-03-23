@@ -15,11 +15,10 @@ export const AuthContextProvider = (props) => {
   useEffect(() => {
     if (storedUserLoggedInInfo === "1") {
       setIsLoggedIn(true);
-      navigate("");
     }
     if (!storedUserLoggedInInfo) {
       setIsLoggedIn(false);
-      navigate("auth");
+      navigate("auth?mode=login");
     }
   }, [isLoggedIn, storedUserLoggedInInfo]);
 
@@ -29,6 +28,7 @@ export const AuthContextProvider = (props) => {
   };
   const LoginHandler = () => {
     localStorage.setItem("isLoggedIn", "1");
+    navigate("");
   };
   return (
     <AuthContext.Provider

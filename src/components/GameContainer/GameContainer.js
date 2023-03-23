@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { useData } from "../../Store/DataProvider";
 import GameCard from "../Card/GameCard";
@@ -6,6 +6,7 @@ import "./GameContainer.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+//right-arrow settings
 const SmapleNextArrow = (props) => {
   const { onClick } = props;
   return (
@@ -16,6 +17,7 @@ const SmapleNextArrow = (props) => {
     </div>
   );
 };
+//left-arrow settings
 const SmaplePrevArrow = (props) => {
   const { onClick } = props;
   return (
@@ -28,6 +30,7 @@ const SmaplePrevArrow = (props) => {
 };
 
 const GameContainer = () => {
+  const [slidingClass, setSlidingClass] = useState("");
   var settings = {
     dots: false,
     infinite: true,
@@ -36,7 +39,25 @@ const GameContainer = () => {
     slidesToScroll: 1,
     nextArrow: <SmapleNextArrow />,
     prevArrow: <SmaplePrevArrow />,
-  }; //Slider settings
+  };
+  //Slider settings
+
+  useEffect(() => {
+    window.addEventListener("scroll", slidingAnimate);
+    return () => {
+      window.removeEventListener("scroll", slidingAnimate);
+    };
+  });
+  const slidingAnimate = () => {
+    if (window) {
+      let windowHeight = window.scrollY;
+      if (windowHeight > 550) {
+        setSlidingClass("animating");
+      } else {
+        setSlidingClass("");
+      }
+    }
+  };
 
   const { games } = useData();
 
@@ -45,7 +66,7 @@ const GameContainer = () => {
       <p>Check out latest games</p>
       <Slider {...settings}>
         {games.map((game) => (
-          <GameCard key={game.id} games={game} />
+          <GameCard key={game.id} games={game} animateClass={slidingClass} />
         ))}
       </Slider>
     </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Rating.css";
 const Rating = (props) => {
   let rate = props.Rating;
-  const [rating, setRating] = useState(rate);
+  const [rating] = useState(rate);
 
   return (
     <div className="star-rating">

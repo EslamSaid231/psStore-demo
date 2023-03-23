@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Pagination.css";
 const Pagination = ({
   totalResults,
@@ -6,7 +6,10 @@ const Pagination = ({
   changePage,
   currentPage,
 }) => {
-  const [pageNumberLimit, setPageNumberLimit] = useState(5);
+  const [pageNumberLimit] = useState(5);
+  //Max/MinpageNumberLimit works as the index of the received array
+  //which is {totalResults} where as which range in the array is rendered
+  //note that {changePage} is a useState function received from the parent component
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
   let pages = [];

@@ -1,5 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
+//not added yet but it's a global loading state while loading data
+//as per now it requires some tweaks in code as the data is loaded locally
 export const LoadingContext = createContext({
   loading: true,
   setLoading: null,

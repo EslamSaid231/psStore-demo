@@ -1,16 +1,10 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
-import {
-  json,
-  Link,
-  redirect,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import AuthContext from "../Store/Auth-Context";
 import CanvasDraw from "./CanvasDraw";
-import LoginCanvas from "./LoginCanvas";
 import "./LoginPage.css";
-import gamesImg from "./games-pc-ps-xbox-1000x1000.png";
+
+//reducers that works just to check the validity of relative inputs dynamically
 const emailReducer = (state, action) => {
   if (action.type === "USER_INPUT") {
     return {
@@ -42,8 +36,10 @@ const passwordReducer = (state, action) => {
 const LoginPage = () => {
   const [searchParams] = useSearchParams();
   const isLogin = searchParams.get("mode") === "login";
-  const navigate = useNavigate();
   const [formIsValid, setFormIsValid] = useState(false);
+  /*reducer hook that is called dynamically with inputs targets
+  that passes the validity the AuthContext with which the approval
+  for redirection is processed*/
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
     isValid: null,
@@ -71,6 +67,7 @@ const LoginPage = () => {
   const passwordChangeHandler = (e) => {
     dispatchPassword({ type: "USER_INPUT", val: e.target.value });
   };
+  //checks validity while the input loses focus
   const validateEmailHandler = () => {
     dispatchEmail({ type: "INPUT_BLUR" });
   };
@@ -82,7 +79,6 @@ const LoginPage = () => {
 
     if (formIsValid) {
       await authCtx.onLogin(emailState.value, passwordState.value);
-      navigate("");
     }
   };
   return (
@@ -125,6 +121,7 @@ const LoginPage = () => {
           </div>
         </div>
       </form>
+      {/*login page background image*/}
       <div className="canvas">
         <CanvasDraw />
       </div>
@@ -133,30 +130,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-export async function action({ request }) {
-  const searchParams = new URL(request.url).searchParams;
-  const mode = searchParams.get("mode") || "login";
-  if (mode !== "login" && mode !== "signup") {
-    throw json({ message: "Unsupported mode." }, { status: 422 });
-  }
-  const data = await request.formData();
-  const authData = {
-    email: data.get("email"),
-    password: data.get("password"),
-  };
-  const response = await fetch("http://localhost:8080/" + mode, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(authData),
-  });
-  if (response.status === 422 || response.status === 401) {
-    return response;
-  }
-  if (!response.ok) {
-    throw json({ message: "Could not authenticate user." }, { status: 500 });
-  }
-  return redirect("home");
-}

@@ -12,6 +12,8 @@ const cartSlice = createSlice({
   },
   reducers: {
     replaceCart(state, action) {
+      /*this reducer is only for fetching cart data 
+      from firebase only when component is rendered*/
       state.items = action.payload.items;
       state.totalQuantity = action.payload.totalQuantity;
     },
@@ -37,7 +39,7 @@ const cartSlice = createSlice({
       }
     },
     removeItemFromCart(state, action) {
-      const { id, price } = action.payload;
+      const { id } = action.payload;
       const existingItem = state.items.find((item) => item.id === id);
       state.totalQuantity--;
 

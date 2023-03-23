@@ -10,9 +10,7 @@ const AdContainer = (props) => {
   };
   return (
     <div className="Ad">
-      <div className="backgroundImg" style={covers}>
-        {/* <img src={props.Pic} alt="/" /> */}
-      </div>
+      <div className="backgroundImg" style={covers}></div>
       <div className="AdTopicContainer">
         <AdTitle
           title={"Feel a New Real"}

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import storeLogo from "../../Assets/psStoreLogo.png";
 import CartButton from "../Cart/CartButton";
 import CollectionLinks from "../Collectionmenu/CollectionLinks";
@@ -18,6 +17,7 @@ const FixedNav = () => {
     setCollectionMenu(false);
   };
   useEffect(() => {
+    //to change navbar classname when scrolling
     window.addEventListener("scroll", stickyNavbar);
 
     return () => {
