@@ -73,6 +73,9 @@ export const sendCartData = (cart) => {
           message: "Your cart has been updated successfully !",
         })
       );
+      setTimeout(() => {
+        dispatch(uiActions.NotificationIsVisible());
+      }, 2000);
     } catch (error) {
       sendCartData().catch((error) => {
         dispatch(
@@ -83,6 +86,9 @@ export const sendCartData = (cart) => {
           })
         );
       });
+      setTimeout(() => {
+        dispatch(uiActions.NotificationIsVisible());
+      }, 5000);
     }
   };
 };

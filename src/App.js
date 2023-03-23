@@ -42,12 +42,10 @@ function App() {
       isInitial = false;
       return;
     }
+
     if (cart.changed) {
       dispatch(sendCartData(cart));
     }
-    setTimeout(() => {
-      dispatch(uiActions.NotificationIsVisible());
-    }, 5000);
   }, [cart, dispatch]);
 
   return (

@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../Store/Redux/store/cart-slice";
+import { uiActions } from "../../Store/Redux/store/ui-slice";
 import "./Cart.css";
 
 const CartLayout = (props) => {
