@@ -1,6 +1,8 @@
 const fs = require("fs");
 const data = fs.readFileSync("./Data.JSON");
+const cartData = fs.readFileSync("./cart.json");
 let obj = JSON.parse(data);
+let object = JSON.parse(cartData);
 
 async function fetching() {
   for (let i = 1; i < 40; i++) {
@@ -17,7 +19,7 @@ async function fetching() {
     });
   }
 }
-fetching();
+
 // const data = fs.readFileSync("./Data.JSON");
 // let myObject = JSON.parse(data);
 // let newData = {

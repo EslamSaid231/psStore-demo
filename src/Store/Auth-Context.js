@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { redirect, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 const AuthContext = React.createContext({
   isLoggedIn: false,
@@ -11,26 +11,24 @@ const AuthContext = React.createContext({
 export const AuthContextProvider = (props) => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const storedUserLoggedInInfo = localStorage.getItem("isLoggedIn");
   useEffect(() => {
-    const storedUserLoggedInInfo = localStorage.getItem("isLoggedIn");
     if (storedUserLoggedInInfo === "1") {
       setIsLoggedIn(true);
-      navigate("/", redirect);
+      navigate("");
     }
     if (!storedUserLoggedInInfo) {
       setIsLoggedIn(false);
-      navigate("/login");
+      navigate("auth");
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, storedUserLoggedInInfo]);
 
   const LogoutHandler = () => {
     localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
-    redirect("login");
   };
   const LoginHandler = () => {
     localStorage.setItem("isLoggedIn", "1");
-    setIsLoggedIn(true);
   };
   return (
     <AuthContext.Provider

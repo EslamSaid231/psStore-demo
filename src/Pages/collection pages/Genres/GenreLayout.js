@@ -40,10 +40,9 @@ const GenreLayout = (props) => {
       )
     );
   });
+
   useLayoutEffect(() => {
-    setTimeout(() => {
-      setPlatArr(arr);
-    }, 500);
+    setPlatArr(arr);
   }, [2]);
 
   return (

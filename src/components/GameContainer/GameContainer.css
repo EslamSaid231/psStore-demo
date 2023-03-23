@@ -3,11 +3,24 @@
   padding: 0 100px;
   margin: 50px auto;
 }
+.GameContainer p {
+  font-weight: 600;
+  font-size: 25px;
+}
+.slick-track {
+  display: flex;
+  height: 500px;
+  align-items: center;
+}
+.slick-track .slick-slide {
+  position: relative;
+  margin-top: 50px;
+}
 
 .GameContainer .control-btn-next {
   position: absolute;
   right: 7px;
-  top: 0px;
+  top: 50px;
 
   width: 70px;
   height: 254px;
@@ -25,7 +38,7 @@
 .GameContainer .control-btn-prev {
   position: absolute;
   left: 7px;
-  top: 0px;
+  top: 50px;
   z-index: 99;
   width: 70px;
   height: 254px;

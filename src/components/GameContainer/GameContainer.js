@@ -37,6 +37,7 @@ const GameContainer = () => {
     nextArrow: <SmapleNextArrow />,
     prevArrow: <SmaplePrevArrow />,
   }; //Slider settings
+
   const { games } = useData();
 
   return (

@@ -3,12 +3,10 @@ import { useDispatch } from "react-redux";
 import arrow from "../../Assets/arrow.png";
 import psLogo from "../../Assets/pslogo.png";
 import AuthContext from "../../Store/Auth-Context";
-import Cart from "../Cart/Cart";
-import CartButton from "../Cart/CartButton";
 import "./NavMenu.css";
 const NavMenu = () => {
-  const dispatch = useDispatch;
   const authCtx = useContext(AuthContext);
+  const dispatch = useDispatch;
   const SigningHandler = () => {
     if (authCtx.isLoggedIn) {
       dispatch(authCtx.onLogout());

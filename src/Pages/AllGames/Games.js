@@ -13,10 +13,7 @@ const Games = () => {
 
   useEffect(() => {
     setLoading(true);
-
     setLoading(false);
-
-    return clearTimeout();
   }, [games]);
 
   return (
@@ -40,7 +37,7 @@ const Games = () => {
               />
             ))}
         </div>
-        {!loading && <PaginationButtons />}
+        <PaginationButtons />
       </div>
     </>
   );

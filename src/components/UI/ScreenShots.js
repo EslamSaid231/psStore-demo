@@ -4,7 +4,7 @@ const ScreenShots = (props) => {
   const clicking = () => {
     props.thumb(props.src);
   };
-  console.log(props.className);
+
   const curImg = () => {
     if (props.curr === props.src) {
       return "this";

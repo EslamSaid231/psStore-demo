@@ -17,10 +17,10 @@ const GameDetails = () => {
   );
   const game = filtering[0];
   const [currentImg, setCurrentImg] = useState();
-  console.log(game.background_image);
+
   useEffect(() => {
     setCurrentImg(game.background_image);
-  }, [gameId]);
+  }, [gameId, game.background_image]);
 
   const genres = game.genres.map((genre) => (
     <Link to={`/games/${genre.name.toLowerCase()}`}>{genre.name}</Link>
@@ -41,7 +41,7 @@ const GameDetails = () => {
       })
     );
   };
-  const thumbChange = (thumb, active) => {
+  const thumbChange = (thumb) => {
     setCurrentImg(thumb);
   };
 
