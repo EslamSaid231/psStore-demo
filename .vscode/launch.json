@@ -7,11 +7,9 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${workspaceFolder}\\src\\API\\server.js"
-        }
+            "name": "Launch test",
+            "runtimeVersion": "chackracore/8.9.4/x64",
+            "program": "${workspaceFolder}/test.js"
+          }
     ]
 }

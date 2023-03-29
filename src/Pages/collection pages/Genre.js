@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router";
+import { useParams } from "react-router";
 import LoadingSpinner from "../../components/UI/LoadingSpinner";
 import { useData } from "../../Store/DataProvider";
 import GenreLayout from "./Genres/GenreLayout";
@@ -8,15 +8,13 @@ import { Link } from "react-router-dom";
 import leftArrow from "../../Assets/leftArrow.png";
 import Pagination from "../../components/UI/Pagination";
 const Genre = () => {
-  const location = useLocation();
   const { genre } = useParams();
 
   const { Data } = useData();
   const [loading, setLoading] = useState(true);
-  const [gameData, setGameData] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage, setCardsPerPage] = useState(20);
+  const [cardsPerPage] = useState(20);
   const lastCardIndex = currentPage * cardsPerPage;
   const firstCardIndex = lastCardIndex - cardsPerPage;
   const [filteredGames, setFilteredGames] = useState([]);
@@ -29,7 +27,6 @@ const Genre = () => {
       );
       const results = await filtering.flatMap((games) => games);
       setFilteredGames(results);
-      setGameData(currentCards);
       setLoading(false);
     };
     fetchingData();
@@ -58,12 +55,14 @@ const Genre = () => {
                     Released={game.released}
                   />
                 ))}
-              <Pagination
-                totalResults={filteredGames.length}
-                cardsPerPage={cardsPerPage}
-                changePage={setCurrentPage}
-                currentPage={currentPage}
-              />
+              <div>
+                <Pagination
+                  totalResults={filteredGames.length}
+                  cardsPerPage={cardsPerPage}
+                  changePage={setCurrentPage}
+                  currentPage={currentPage}
+                />
+              </div>
             </div>
           </div>
         </>

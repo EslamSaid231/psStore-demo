@@ -1,5 +1,5 @@
 import React, { useContext, useLayoutEffect, useState } from "react";
-import { useLocation } from "react-router";
+
 import Data from "../API/Data.json";
 export const DataContext = React.createContext({
   page: "1",
@@ -10,15 +10,10 @@ export const DataContext = React.createContext({
 export function DataContextProvider({ children }) {
   const [games, setGames] = useState([]);
   const [pagestate, setPageState] = useState(0);
-  const location = useLocation();
+
   useLayoutEffect(() => {
     setGames(Data[pagestate]);
-    if (location.pathname === "/") {
-      setPageState(0);
-    } else {
-      setPageState(pagestate);
-    }
-  }, [pagestate, location.pathname]);
+  }, [pagestate]);
   return (
     <DataContext.Provider value={{ Data, games, setPageState, pagestate }}>
       {children}

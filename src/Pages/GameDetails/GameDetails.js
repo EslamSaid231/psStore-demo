@@ -49,13 +49,13 @@ const GameDetails = () => {
 
   return (
     <>
-      <div key={filtering.map((game) => game.id)}>
+      <div key={game.id}>
         <div className="detailsContainer">
           <img src={currentImg} alt={filtering.map((game) => game.name)} />
 
           <div className="gameDetails">
             <div className="go-backLink">
-              <Link to={`/games`}>
+              <Link to="/games">
                 <img src={leftArrow} className="go-backImg" alt="go-back" />
               </Link>
             </div>

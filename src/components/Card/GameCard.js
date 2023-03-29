@@ -21,7 +21,7 @@ const GameCard = (props) => {
   return (
     <>
       <div className={`GameCard ${props.animateClass}`} key={props.games.id}>
-        <div>
+        <div className="GameCard ">
           <NavLink to={`/game/${props.games.id}`}>
             <div className="gameImg">
               <img src={props.games.background_image} alt={props.games.name} />

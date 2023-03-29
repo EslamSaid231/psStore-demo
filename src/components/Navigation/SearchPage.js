@@ -3,11 +3,10 @@ import "./SearchPage.css";
 import SearchResults from "./SearchResults";
 
 const SearchPage = ({ Cards, onClose }) => {
-  console.log(Cards);
   return (
     <div className="cards-container">
       {Cards.map((games) => (
-        <div className="result-card">
+        <div className="result-card" key={games.id}>
           <SearchResults
             key={games.id}
             onClose={onClose}

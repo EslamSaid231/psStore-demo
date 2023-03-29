@@ -1,17 +1,16 @@
-import React, { useContext, useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
+
+import { Form } from "react-router-dom";
 import arrow from "../../Assets/arrow.png";
 import psLogo from "../../Assets/pslogo.png";
-import AuthContext from "../../Store/Auth-Context";
 import "./NavMenu.css";
 const NavMenu = () => {
-  const authCtx = useContext(AuthContext);
-  const dispatch = useDispatch;
-  const SigningHandler = () => {
-    if (authCtx.isLoggedIn) {
-      dispatch(authCtx.onLogout());
-    }
-  };
+  // const dispatch = useDispatch;
+  // const SigningHandler = () => {
+  //   if (authCtx.isLoggedIn) {
+  //     dispatch(authCtx.onLogout());
+  //   }
+  // };
 
   return (
     <>
@@ -51,9 +50,9 @@ const NavMenu = () => {
           </div>
         </div>
         <div className="searchCont">
-          <button onClick={SigningHandler}>
-            {authCtx.isLoggedIn ? "Sign Out" : "Sign In"}
-          </button>
+          <Form action="/logout" method="post">
+            <button>Sign out</button>
+          </Form>
         </div>
       </div>
     </>

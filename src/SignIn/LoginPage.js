@@ -1,6 +1,12 @@
-import React, { useContext, useEffect, useReducer, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import AuthContext from "../Store/Auth-Context";
+import React, { useReducer } from "react";
+import {
+  Form,
+  Link,
+  useActionData,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
+
 import CanvasDraw from "./CanvasDraw";
 import "./LoginPage.css";
 
@@ -34,9 +40,12 @@ const passwordReducer = (state, action) => {
   }
 };
 const LoginPage = () => {
+  const data = useActionData();
+  const navigate = useNavigate();
+  const isSubmitting = navigate.state === "submitting";
   const [searchParams] = useSearchParams();
   const isLogin = searchParams.get("mode") === "login";
-  const [formIsValid, setFormIsValid] = useState(false);
+
   /*reducer hook that is called dynamically with inputs targets
   that passes the validity the AuthContext with which the approval
   for redirection is processed*/
@@ -48,19 +57,10 @@ const LoginPage = () => {
     value: "",
     isValid: null,
   });
-  const authCtx = useContext(AuthContext);
 
   const { isValid: emailIsValid } = emailState;
   const { isValid: passwordIsValid } = passwordState;
 
-  useEffect(() => {
-    const identifier = setTimeout(() => {
-      setFormIsValid(emailIsValid && passwordIsValid);
-    }, 500);
-    return () => {
-      clearTimeout(identifier);
-    };
-  }, [emailIsValid, passwordIsValid]);
   const emailChangeHandler = (e) => {
     dispatchEmail({ type: "USER_INPUT", val: e.target.value });
   };
@@ -74,18 +74,20 @@ const LoginPage = () => {
   const validatePasswordHandler = () => {
     dispatchPassword({ type: "INPUT_BLUR" });
   };
-  const submitHandler = async (e) => {
-    e.preventDefault();
 
-    if (formIsValid) {
-      await authCtx.onLogin(emailState.value, passwordState.value);
-    }
-  };
   return (
     <div className="Login-container">
-      <form onSubmit={submitHandler} className="login-form">
+      <Form className="login-form" method="post">
         <div className="form-inputs">
           <h3>{isLogin ? "Log in" : "Create a new user"}</h3>
+          {data && data.errors && (
+            <ul>
+              {Object.values(data.errors).map((err) => (
+                <p key={err}>{err}</p>
+              ))}
+            </ul>
+          )}
+          {data && data.message && <p>{data.message}</p>}
           <label htmlFor="email" className="email">
             Email:
           </label>
@@ -96,6 +98,7 @@ const LoginPage = () => {
             onChange={emailChangeHandler}
             onBlur={validateEmailHandler}
             className={!emailIsValid ? "invalid" : ""}
+            required
           />
           <label htmlFor="password" className="password">
             Password:
@@ -107,6 +110,7 @@ const LoginPage = () => {
             onChange={passwordChangeHandler}
             onBlur={validatePasswordHandler}
             className={!passwordIsValid ? "invalid" : ""}
+            required
           />
           <button>{isLogin ? "Sign in" : "Sign up"}</button>
           <div className="signing-up">
@@ -120,7 +124,7 @@ const LoginPage = () => {
             </span>
           </div>
         </div>
-      </form>
+      </Form>
       {/*login page background image*/}
       <div className="canvas">
         <CanvasDraw />

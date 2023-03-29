@@ -1,10 +1,8 @@
 import "./App.css";
-import Navbar from "./components/Navigation/Navbar";
 import MainContainer from "./components/MainTitle/MainContainer";
 import { DataContextProvider } from "./Store/DataProvider";
-import { Fragment, useContext, useEffect } from "react";
-import AuthContext from "./Store/Auth-Context";
-import { Route, Routes } from "react-router";
+import { Fragment, useEffect } from "react";
+import { RouterProvider } from "react-router";
 import GameDetails from "./Pages/GameDetails/GameDetails";
 import Notification from "./components/UI/Notification";
 import Genre from "./Pages/collection pages/Genre";
@@ -13,11 +11,43 @@ import Cart from "./components/Cart/Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCartData, sendCartData } from "./Store/Redux/store/cart-actions";
 import { LoadingProvider } from "./Store/Loading-Context";
-import { uiActions } from "./Store/Redux/store/ui-slice";
-import LoginPage from "./SignIn/LoginPage";
+import { createBrowserRouter } from "react-router-dom";
+import RootLayout from "./Pages/RootLayout";
+import ErrorPage from "./Pages/ErrorPage";
+import Authentication, { action as authAction } from "./SignIn/Authentication";
+import { action as logoutAction } from "./Pages/Logout";
+import { chechAuthLoader, tokenLoader } from "./components/util/auth";
 let isInitial = true;
 function App() {
-  const ctx = useContext(AuthContext);
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />,
+      errorElement: <ErrorPage />,
+      id: "root",
+      loader: tokenLoader,
+      children: [
+        {
+          path: "auth",
+          element: <Authentication />,
+          action: authAction,
+        },
+        {
+          index: true,
+          element: <MainContainer />,
+          loader: chechAuthLoader,
+        },
+        { path: "/games", element: <Games />, loader: chechAuthLoader },
+        { path: "/games/:genre", element: <Genre />, loader: chechAuthLoader },
+        {
+          path: "game/:gameId",
+          element: <GameDetails />,
+          loader: chechAuthLoader,
+        },
+        { path: "logout", action: logoutAction },
+      ],
+    },
+  ]);
   const showCart = useSelector((state) => state.ui.cartIsVisible);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -26,7 +56,6 @@ function App() {
   const NotificationIsVisible = useSelector(
     (state) => state.ui.NotificationIsVisible
   );
-  console.log(NotificationIsVisible);
 
   //a side effect working seperately to just fetch cart data
   useEffect(() => {
@@ -61,15 +90,9 @@ function App() {
                   message={notification.message}
                 />
               )}
-              <div>{ctx.isLoggedIn ? <Navbar /> : null}</div>
+
               {showCart && <Cart />}
-              <Routes>
-                <Route path="auth" element={<LoginPage />} />
-                <Route path="/" element={<MainContainer />} />
-                <Route path="/game/:gameId" element={<GameDetails />} />
-                <Route path="/games" element={<Games />} />
-                <Route path="/games/:genre" element={<Genre />} />
-              </Routes>
+              <RouterProvider router={router} />
             </Fragment>
           </LoadingProvider>
         </DataContextProvider>

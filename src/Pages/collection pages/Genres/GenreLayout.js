@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import "./GenreLayout.css";
 import Ps5 from "../../../Assets/ps5icon.png";
 import Ps4 from "../../../Assets/ps4.png";
@@ -29,8 +29,6 @@ const GenreLayout = (props) => {
   const platforms = props.platforms.map((plat) => plat.platform.name);
   let arr = [];
 
-  let cancel = 2;
-
   platImages.filter((img) => {
     return img.name.includes(
       platforms.map((platform) =>
@@ -47,7 +45,7 @@ const GenreLayout = (props) => {
 
   return (
     <>
-      <div className="cardAnimator">
+      <div className="cardAnimator" key={props.gameID}>
         <div className="figure-card">
           <figure className="game-figure">
             <Link to={`/game/${props.gameID}`}>

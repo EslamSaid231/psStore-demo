@@ -59,13 +59,19 @@ const GameContainer = () => {
     }
   };
 
-  const { games } = useData();
+  const { Data } = useData();
+
+  const latestGames = Data.flatMap((data) =>
+    data.filter((date) => {
+      return date.released.includes("2020");
+    })
+  );
 
   return (
     <div className="GameContainer">
       <p>Check out latest games</p>
       <Slider {...settings}>
-        {games.map((game) => (
+        {latestGames.map((game) => (
           <GameCard key={game.id} games={game} animateClass={slidingClass} />
         ))}
       </Slider>
