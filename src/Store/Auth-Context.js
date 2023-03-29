@@ -28,7 +28,7 @@ export const AuthContextProvider = (props) => {
   };
   const LoginHandler = () => {
     localStorage.setItem("isLoggedIn", "1");
-    navigate("");
+    navigate("/");
   };
   return (
     <AuthContext.Provider

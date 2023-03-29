@@ -2,6 +2,9 @@
   height: fit-content;
   margin: 5px;
 }
+.results-card img {
+  height: 250px;
+}
 .results-card:hover {
   margin: 5px;
 }

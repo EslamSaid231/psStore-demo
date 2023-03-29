@@ -7,7 +7,7 @@ const Slider = (props) => {
 
   useEffect(() => {
     setLength(children.length);
-    console.log(currentIndex);
+
     if (length === children.length) {
       setLength(0);
     }

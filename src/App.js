@@ -13,7 +13,6 @@ import Cart from "./components/Cart/Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCartData, sendCartData } from "./Store/Redux/store/cart-actions";
 import { LoadingProvider } from "./Store/Loading-Context";
-import { uiActions } from "./Store/Redux/store/ui-slice";
 import LoginPage from "./SignIn/LoginPage";
 let isInitial = true;
 function App() {

@@ -83,7 +83,7 @@ const LoginPage = () => {
   };
   return (
     <div className="Login-container">
-      <form onSubmit={submitHandler} className="login-form">
+      <form onSubmit={submitHandler} className="login-form" method="post">
         <div className="form-inputs">
           <h3>{isLogin ? "Log in" : "Create a new user"}</h3>
           <label htmlFor="email" className="email">
@@ -108,7 +108,9 @@ const LoginPage = () => {
             onBlur={validatePasswordHandler}
             className={!passwordIsValid ? "invalid" : ""}
           />
-          <button>{isLogin ? "Sign in" : "Sign up"}</button>
+          <button onClick={submitHandler}>
+            {isLogin ? "Sign in" : "Sign up"}
+          </button>
           <div className="signing-up">
             <span>
               {isLogin ? "Not a Member ?" : "Already a member ?"}{" "}

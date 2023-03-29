@@ -49,7 +49,7 @@ const GameDetails = () => {
 
   return (
     <>
-      <div key={filtering.map((game) => game.id)}>
+      <div key={game.id}>
         <div className="detailsContainer">
           <img src={currentImg} alt={filtering.map((game) => game.name)} />
 
@@ -80,7 +80,7 @@ const GameDetails = () => {
         </div>
       </div>
       <div className="screenshotsContainer">
-        <Slider>
+        <Slider key={game.id}>
           {screenShots.map((screen) =>
             screen.map((shot, ind) => {
               ind += 1;

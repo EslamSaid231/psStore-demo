@@ -58,9 +58,9 @@ const GamesLayout = (props) => {
               </div>
             </Link>
             <div className="gameDesc">
-              <p>
+              <span>
                 <Rating Rating={props.rating} disabled={false} />
-              </p>
+              </span>
               <div className="gameText">
                 <div className="platform-img">
                   <p>Available on: </p>

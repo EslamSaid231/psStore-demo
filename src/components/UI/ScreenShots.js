@@ -11,7 +11,11 @@ const ScreenShots = (props) => {
     }
   };
   return (
-    <div className={`screenShots ${curImg()}`} onClick={clicking}>
+    <div
+      className={`screenShots ${curImg()}`}
+      onClick={clicking}
+      key={props.id}
+    >
       <img className={curImg()} src={props.src} alt="/" />
     </div>
   );
