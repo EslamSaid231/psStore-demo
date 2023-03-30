@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/EslamSaid231/psStore-demo/static/css/main.e1236d03.css",
-    "main.js": "/EslamSaid231/psStore-demo/static/js/main.1701ee71.js",
-    "static/media/god_of_war.jpg": "/EslamSaid231/psStore-demo/static/media/god_of_war.9ad6a421afecd9dc3831.jpg",
-    "static/media/gamesbackground.jfif": "/EslamSaid231/psStore-demo/static/media/gamesbackground.691535fcb6cf84f49cf1.jfif",
-    "static/media/call_of_duty_sony_microsoft_activision_eu.jpg": "/EslamSaid231/psStore-demo/static/media/call_of_duty_sony_microsoft_activision_eu.c38b570f96ea107fa269.jpg",
-    "static/media/d545a095.webp": "/EslamSaid231/psStore-demo/static/media/9777b74a69bdb53eee269fac15ad5793d545a095.07e60fd195f7eda7d305.webp",
-    "static/media/psStoreLogo.png": "/EslamSaid231/psStore-demo/static/media/psStoreLogo.2dca377023e44d6498f1.png",
-    "static/media/playstation3.png": "/EslamSaid231/psStore-demo/static/media/playstation3.4e4fa8568479eff3cd22.png",
-    "static/media/slick.svg": "/EslamSaid231/psStore-demo/static/media/slick.2630a3e3eab21c607e21.svg",
-    "static/media/slick.eot": "/EslamSaid231/psStore-demo/static/media/slick.a4e97f5a2a64f0ab1323.eot",
-    "static/media/slick.ttf": "/EslamSaid231/psStore-demo/static/media/slick.c94f7671dcc99dce43e2.ttf",
-    "index.html": "/EslamSaid231/psStore-demo/index.html",
-    "static/media/slick.woff": "/EslamSaid231/psStore-demo/static/media/slick.295183786cd8a1389865.woff",
-    "main.e1236d03.css.map": "/EslamSaid231/psStore-demo/static/css/main.e1236d03.css.map",
-    "main.1701ee71.js.map": "/EslamSaid231/psStore-demo/static/js/main.1701ee71.js.map"
+    "main.css": "/psStore-demo/static/css/main.84464f05.css",
+    "main.js": "/psStore-demo/static/js/main.7e2753e2.js",
+    "static/media/god_of_war.jpg": "/psStore-demo/static/media/god_of_war.9ad6a421afecd9dc3831.jpg",
+    "static/media/gamesbackground.jfif": "/psStore-demo/static/media/gamesbackground.691535fcb6cf84f49cf1.jfif",
+    "static/media/call_of_duty_sony_microsoft_activision_eu.jpg": "/psStore-demo/static/media/call_of_duty_sony_microsoft_activision_eu.c38b570f96ea107fa269.jpg",
+    "static/media/d545a095.webp": "/psStore-demo/static/media/9777b74a69bdb53eee269fac15ad5793d545a095.07e60fd195f7eda7d305.webp",
+    "static/media/psStoreLogo.png": "/psStore-demo/static/media/psStoreLogo.2dca377023e44d6498f1.png",
+    "static/media/playstation3.png": "/psStore-demo/static/media/playstation3.4e4fa8568479eff3cd22.png",
+    "static/media/slick.svg": "/psStore-demo/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/psStore-demo/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/psStore-demo/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "index.html": "/psStore-demo/index.html",
+    "static/media/slick.woff": "/psStore-demo/static/media/slick.295183786cd8a1389865.woff",
+    "main.84464f05.css.map": "/psStore-demo/static/css/main.84464f05.css.map",
+    "main.7e2753e2.js.map": "/psStore-demo/static/js/main.7e2753e2.js.map"
   },
   "entrypoints": [
-    "static/css/main.e1236d03.css",
-    "static/js/main.1701ee71.js"
+    "static/css/main.84464f05.css",
+    "static/js/main.7e2753e2.js"
   ]
 }
